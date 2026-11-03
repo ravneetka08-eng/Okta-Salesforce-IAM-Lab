@@ -1,9 +1,10 @@
-# Test results (fill only after execution)
+
+# Test results
 
 | Test ID | Date | Test identity | Action | Expected result | Actual result | Pass/Fail | Evidence file |
 |---|---|---|---|---|---|---|---|
-| T01 | TBD | Test Marketing user | Launch Salesforce from Okta | SSO succeeds if corresponding Salesforce user is properly configured | Not tested | Pending | |
-| T02 | TBD | Test HR user | Check Salesforce assignment | Not assigned in Okta | Not tested | Pending | |
-| T03 | TBD | Test Marketing user | Remove group membership and refresh Okta dashboard | App assignment disappears | Not tested | Pending | |
+| T01 | 03 Nov 2026 | Test Marketing user | Launch Salesforce from Okta | SSO succeeds if corresponding Salesforce user is properly configured | Salesforce SSO error observed; successful SAML authentication not confirmed | Fail (attempt) | `evidence/salesforce/02-sso-error.png` |
+| T02 | 01 Nov 2026 | Test HR user | Check Salesforce assignment | Salesforce application not assigned in Okta | Salesforce application tile absent from Okta dashboard; assignment status not independently confirmed | Partially verified | `evidence/okta/06-salesforce-app-not-visible.png` |
+| T03 | 01 Nov 2026 | Test Marketing user | Remove group membership and refresh Okta dashboard | Salesforce application assignment disappears | Screenshots show Salesforce tile present and absent; group removal as the cause not independently confirmed | Partially verified | `evidence/okta/05-salesforce-app-assigned.png`, `evidence/okta/06-salesforce-app-not-visible.png` |
 | T04 | TBD | Test Marketing user | Check existing Salesforce session after removal | Record actual session behaviour; do not assume revocation | Not tested | Pending | |
 | T05 | TBD | Test users | Review Okta System Log | Relevant events visible | Not tested | Pending | |
