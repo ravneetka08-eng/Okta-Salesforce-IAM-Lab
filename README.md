@@ -11,25 +11,76 @@ Portfolio lab for learning identity administration, group-based application assi
 - **SAML 2.0:** Federation for single sign-on; it is not user provisioning.
 - **Optional provisioning:** Separate mechanism, only document if actually implemented and verified.
 
-## Planned demonstrations
+
+## Implementation Demonstrations
+
 | Scenario | Evidence | Status |
 |---|---|---|
-| Create two test identities | `evidence/okta/01-users.png` | Not yet verified |
-| Create groups and memberships | `evidence/okta/02-groups.png` | Not yet verified |
-| Review MFA/authentication policy | `evidence/okta/03-auth-policy.png` | Not yet verified |
-| Configure Salesforce SAML settings | `evidence/salesforce/01-saml-settings.png` | Not yet verified |
-| Configure Okta Salesforce integration | `evidence/okta/04-salesforce-saml.png` | Not yet verified |
-| Assign Salesforce app to approved group | `evidence/okta/05-group-app-assignment.png` | Not yet verified |
-| Positive SSO test | `evidence/tests/01-authorized-sso.png` | Not yet verified |
-| Negative access test | `evidence/tests/02-unassigned-user.png` | Not yet verified |
-| Remove membership and retest | `evidence/tests/03-access-removal.png` | Not yet verified |
-| Review relevant system events | `evidence/tests/04-system-log.png` | Not yet verified |
+| Create test identities in Okta | `evidence/okta/01-okta-users.png` | Completed — users visible |
+| Create groups in Okta | `evidence/okta/02-okta-groups.png` | Completed — groups visible |
+| Configure user-group membership | `evidence/okta/03-hr-group-membership.png` | Completed — membership visible |
+| Review MFA/authentication policy | Not captured | Configured — evidence pending |
+| Configure Salesforce SAML settings | `evidence/salesforce/01-saml-sso-configuration.png` | Completed — configuration captured |
+| Configure Okta Salesforce integration | `evidence/okta/04-salesforce-app-integration.png` | Completed — configuration captured |
+| Assign Salesforce application to approved users/groups | `evidence/okta/05-salesforce-app-assigned.png` | Partially verified — app visible in dashboard |
+| Check Salesforce application visibility for another user | `evidence/okta/06-salesforce-app-not-visible.png` | Observed — app tile absent |
+| Positive SSO test | `evidence/salesforce/02-sso-error.png` | Failed attempt — troubleshooting required |
+| Salesforce application session | `evidence/salesforce/03-salesforce-session.png` | Observed — SSO method not confirmed |
+| Remove group membership and retest | Evidence pending | Not fully verified |
+| Check existing Salesforce session after access removal | Evidence pending | Not tested |
+| Review relevant Okta System Log events | Evidence pending | Not tested |
+| Automated Salesforce deprovisioning | Not applicable | Not implemented |
 
-## Evidence and verification
-See [Evidence Checklist](docs/EVIDENCE-CHECKLIST.md) and [Test Results](docs/TEST-RESULTS.md). Replace placeholders only after executing each test.
+## Evidence and Verification
 
-## Security
-All users and organisations in this repository should be synthetic test data. Redact emails, org-specific URLs when sensitive, tokens, passwords, recovery codes, QR codes, session cookies, SAML assertions, private keys and confidential data before publishing. Never commit live credentials.
+Screenshots collected during implementation are stored in the
+`evidence/` directory.
 
-## Learning context
-This is an independent hands-on learning portfolio inspired by an IAM workshop. Document only work personally completed and verified; don't represent workshop demonstrations as your own test results.
+### Okta Evidence
+
+- User creation and account management.
+- Group creation and membership configuration.
+- Salesforce application integration.
+- Salesforce application visibility in the Okta dashboard.
+- Salesforce application absence from another dashboard.
+
+### Salesforce Evidence
+
+- SAML 2.0 Single Sign-On configuration.
+- SSO authentication error captured during testing.
+- Salesforce application session captured.
+
+### Verification Status
+
+The project demonstrates the configuration of Okta as an
+Identity Provider (IdP) and Salesforce as a Service Provider (SP).
+
+The screenshots support the completed configuration activities
+and selected application-visibility observations.
+
+However, successful end-to-end SAML authentication has not
+yet been confirmed.
+
+The Salesforce session screenshot does not independently
+prove that authentication occurred through Okta SAML SSO.
+
+Removing an Okta application assignment does not automatically
+deactivate the corresponding Salesforce user account.
+
+Automated Salesforce provisioning and deprovisioning
+were not implemented in this project.
+
+### Supporting Documentation
+
+- [Test Results](docs/TEST-RESULTS.md)
+- [Evidence Checklist](docs/EVIDENCE-CHECKLIST.md)
+- [Evidence Screenshots](evidence/README.md)
+
+### Remaining Validation
+
+- Troubleshoot the Salesforce SSO authentication error.
+- Verify successful SAML authentication and identity mapping.
+- Confirm application assignment removal following group changes.
+- Test Salesforce session behaviour after access removal.
+- Review Okta System Log events and capture evidence.
+
