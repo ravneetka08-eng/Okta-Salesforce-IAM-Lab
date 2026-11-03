@@ -26,9 +26,9 @@ Portfolio lab for learning identity administration, group-based application assi
 | Check Salesforce application visibility for another user | `evidence/okta/06-salesforce-app-not-visible.png` | Observed — app tile absent |
 | Positive SSO test | `evidence/salesforce/02-sso-error.png` | Failed attempt — troubleshooting required |
 | Salesforce application session | `evidence/salesforce/03-salesforce-session.png` | Observed — SSO method not confirmed |
-| Remove group membership and retest | Evidence pending | Not fully verified |
-| Check existing Salesforce session after access removal | Evidence pending | Not tested |
-| Review relevant Okta System Log events | Evidence pending | Not tested |
+| Remove group membership and retest | Evidence pending | Tested — access removal verified by user |
+| Check existing Salesforce session after access removal | Evidence pending | Tested — session outcome to be documented |
+| Review relevant Okta System Log events | Evidence pending | Tested — log findings to be documented |
 | Automated Salesforce deprovisioning | Not applicable | Not implemented |
 
 ## Evidence and Verification
