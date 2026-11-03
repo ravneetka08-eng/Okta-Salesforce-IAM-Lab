@@ -1,22 +1,37 @@
-# Screenshot capture checklist
 
-Capture only **your own** lab, after performing each action. Name files as shown in the README.
+# Evidence Checklist
 
-1. Okta > Directory > People: two synthetic users (redact identifiers if needed).
-2. Okta > Directory > Groups: two groups and their members.
-3. Okta > Security > Authentication Policies: relevant policy and requirements; never expose secrets.
-4. Salesforce > Setup > Single Sign-On Settings: SAML enabled and configuration (redact org-specific URLs/certificates as appropriate).
-5. Okta > Applications > Salesforce: SAML sign-on configuration (redact sensitive values).
-6. Okta > Groups > Applications: group-to-Salesforce assignment.
-7. Browser private session: assigned test user successfully reaches Salesforce through Okta (capture landing page, not tokens).
-8. Separate private session: unassigned user cannot access Salesforce via Okta; note exact observed outcome (missing tile, access denied, etc.).
-9. Remove group membership and repeat test: show assignment removal and resulting behaviour. A missing bookmark tile alone does not prove Salesforce sessions were revoked.
-10. Okta System Log: event type, result, timestamp and synthetic user, with sensitive identifiers redacted.
+## Okta Configuration
 
-For each screenshot, record date, action, expected result, actual result, and whether it passed in TEST-RESULTS.md.
+| Evidence ID | Configuration | Description | Status | Evidence file |
+|---|---|---|---|---|
+| E01 | User management | Test user accounts created in Okta | Captured | `evidence/okta/01-okta-users.png` |
+| E02 | Group management | Groups created in Okta | Captured | `evidence/okta/02-okta-groups.png` |
+| E03 | Group membership | HR group membership configured | Captured | `evidence/okta/03-hr-group-membership.png` |
+| E04 | Salesforce integration | Salesforce application configured in Okta | Captured | `evidence/okta/04-salesforce-app-integration.png` |
+| E05 | Application assignment | Salesforce application visible in Okta user dashboard | Captured | `evidence/okta/05-salesforce-app-assigned.png` |
+| E06 | Application visibility | Salesforce application absent from Okta user dashboard | Captured | `evidence/okta/06-salesforce-app-not-visible.png` |
 
-## Additional strong evidence
-- A simple architecture diagram showing Okta as IdP and Salesforce as separate SP.
-- An access matrix listing test users, groups, intended app assignments, and actual outcomes.
-- One failed sign-in troubleshooting example with resolution, if encountered.
-- A short limitations section: app assignment is not the same as Salesforce authorisation; SAML SSO is not SCIM provisioning; removing an Okta tile does not necessarily terminate existing Salesforce sessions.
+## Salesforce Configuration
+
+| Evidence ID | Configuration | Description | Status | Evidence file |
+|---|---|---|---|---|
+| E07 | SAML SSO | Salesforce SAML Single Sign-On configuration | Captured | `evidence/salesforce/01-saml-sso-configuration.png` |
+| E08 | SSO troubleshooting | Salesforce SSO error during authentication attempt | Captured | `evidence/salesforce/02-sso-error.png` |
+| E09 | Salesforce session | Salesforce Chatter session visible; SSO authentication method not confirmed | Captured | `evidence/salesforce/03-salesforce-session.png` |
+
+## Additional Evidence Required
+
+- [ ] Successful Okta-to-Salesforce SAML SSO login
+- [ ] Verified Salesforce identity matching using NameID
+- [ ] Confirmed application assignment removal after group change
+- [ ] Existing Salesforce session behaviour after access removal
+- [ ] Okta System Log authentication events
+- [ ] Okta System Log application assignment events
+
+## Evidence Handling
+
+- Screenshots must not expose passwords, tokens, secrets, or private keys.
+- Sensitive tenant information should be redacted where appropriate.
+- Original screenshots should be retained privately if needed.
+- Test outcomes must be supported by captured evidence.
